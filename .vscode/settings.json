@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/a05c0995-c2f1-46c5-90f2-eca25ca3af50/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/flight-booking-backend",
+    "appService.deploySubpath": "."
+}

@@ -9,6 +9,12 @@ app.use(express.json());
 //to remove cors problem
 app.use(cors());
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  // Add other necessary CORS headers here
+  next();
+});
+
 const PORT = 5000;
 
 app.listen(PORT, () => {
