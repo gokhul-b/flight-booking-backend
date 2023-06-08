@@ -3,11 +3,12 @@ const cors = require("cors");
 const mysql2 = require("mysql2");
 const app = express();
 const fs = require("fs");
+const { error } = require("console");
 //to access the JSON data
 app.use(express.json());
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   // Add other necessary CORS headers here
   next();
 });
@@ -48,6 +49,17 @@ db.connect((err) => {
   } else {
     console.log("Connected to database");
   }
+});
+
+app.get("/", (req, res) => {
+  const query = "SELECT * FROM addflight";
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("listed successfully", results);
+    }
+  });
 });
 
 app.post("/addflights", (req, res) => {
