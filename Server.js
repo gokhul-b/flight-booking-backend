@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mysql2 = require("mysql2");
 const app = express();
-
+const fs = require("fs");
 //to access the JSON data
 app.use(express.json());
 
@@ -15,11 +15,20 @@ app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
 
-const db = mysql2.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
+// const db = mysql2.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "password",
+//   database: "flight",
+// });
+
+var db = mysql2.createConnection({
+  host: "gokhul.mysql.database.azure.com",
+  user: "gokhulroot",
+  password: "saumit@21",
   database: "flight",
+  port: 3306,
+  ssl: { ca: fs.readFileSync("DigiCertGlobalRootCA.crt.pem") },
 });
 
 db.connect((err) => {
