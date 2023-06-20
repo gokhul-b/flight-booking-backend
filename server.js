@@ -45,14 +45,15 @@ db.connect((err) => {
   }
 });
 
-app.get("/", (req, res) => {
-  const query = "SELECT * FROM addflight";
+app.get("/getAllids", (req, res) => {
+  const query = "SELECT id FROM addflight";
   db.query(query, (error, results) => {
     if (error) {
       console.error(error);
     } else {
-      console.log("listed successfully", results);
+      console.log("listed successfully");
     }
+    res.json(results);
   });
 });
 
