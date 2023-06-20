@@ -202,7 +202,7 @@ app.post("/mybookings", (req, res) => {
   const { flight, booked, userid } = req.body;
   console.log(flight, booked);
   const query =
-    "INSERT INTO mybookings (`flightname`, `from`, `to`, `departure`, price, seats, `userid`) VALUES(?,?,?,?,?,?,?)";
+    "INSERT INTO mybookings (`flightname`, `from`, `to`, `departure`, price, seats, `userid`, `flightid`) VALUES(?,?,?,?,?,?,?,?)";
   const values = [
     flight.flightname,
     flight.from,
@@ -211,6 +211,7 @@ app.post("/mybookings", (req, res) => {
     parseInt(flight.price),
     parseInt(booked),
     userid,
+    flight.id,
   ];
   console.log(values);
 
