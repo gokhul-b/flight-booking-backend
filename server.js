@@ -46,8 +46,10 @@ db.connect((err) => {
 });
 
 app.get("/getAllids", (req, res) => {
-  const query = "SELECT id FROM addflight";
-  db.query(query, (error, results) => {
+  const today = new Date();
+  const query = "SELECT id FROM addflight where departure >= ?";
+  const params = [today];
+  db.query(query, params, (error, results) => {
     if (error) {
       console.error(error);
     } else {
